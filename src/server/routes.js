@@ -13,7 +13,19 @@ router.post('/getPuntos', urlencodedParser, async (req , res)=> {
     }
     catch(e){
         console.log(e);
-        res.send({result:false,message:"Invalid username or password"})
+        res.send({result:false,message:" "})
+    }
+});
+
+router.post('/getRadio', urlencodedParser, async (req , res)=> {
+    try{
+        console.log(req.body);
+        let puntos = await DB.default.puntos.getRadio(req.body.latitud, req.body.longitud);
+        res.send({result:true, puntos:puntos});
+    }
+    catch(e){
+        console.log(e);
+        res.send({result:false,message:" "})
     }
 });
 

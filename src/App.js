@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import L from 'leaflet';
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import Principal from './components/principal.js';
+import Radio from './components/radio.js';
 import LeafletMap from './components/LeafletMap';
 import ReactDOM from 'react-dom';
 
@@ -69,14 +70,17 @@ class App extends React.Component {
         dots: []
       }
     );
+    
     const { rutas, puntos, dots } = this.state;
-    console.log("ALLA");
-    console.log(this.state.dots);
     ReactDOM.render(<LeafletMap puntos={puntos} dots={dots}></LeafletMap>, document.getElementById('ContMapa'));
   }
 
   agregarRuta() {
     ReactDOM.render(<Principal />, document.getElementById('root'));
+  }
+
+  obtenerRadio() {
+    ReactDOM.render(<Radio />, document.getElementById('root'));
   }
 
   render() {
@@ -98,6 +102,7 @@ class App extends React.Component {
           </div>
           {puntos.map(this.renderPuntos3)}
           <button className="BotonRuta" onClick={this.agregarRuta}>Agregar Ruta</button>
+          <button className="BotonRuta" onClick={this.obtenerRadio}>Radio de Puntos</button>
         </div>
       </div >
     );
